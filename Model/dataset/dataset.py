@@ -1,14 +1,16 @@
-import torch
 import os
+
 import cv2
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-from tqdm import tqdm
+import numpy as np
+import pandas as pd
+import torch
 from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 
 class DataSet:
+
     def __init__(
         self,
         data_dir: str = "./raw/",
@@ -18,13 +20,18 @@ class DataSet:
         self.data_dir = data_dir
         self.save_dir = save_dir
 
-    def analytics(self, plot: bool = False, figsize_of_analytics: tuple = ()) -> tuple:
+    def analytics(self,
+                  plot: bool = False,
+                  figsize_of_analytics: tuple = ()) -> tuple:
         value_counts = dict(self.data_csv["label"].value_counts())
         if plot:
             classification_class = list(value_counts.keys())
             number_of_values = list(value_counts.values())
             plt.figure(figsize=figsize_of_analytics)
-            plt.bar(classification_class, number_of_values, color="green", width=0.4)
+            plt.bar(classification_class,
+                    number_of_values,
+                    color="green",
+                    width=0.4)
             plt.xlabel("Classification Class")
             plt.ylabel("Number of Values")
             plt.title("Classes In Relation to Values")
@@ -41,7 +48,10 @@ class DataSet:
             value_counts,
         )
 
-    def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = 0) -> tuple:
+    def get_labels(self,
+                   labels: dict = {},
+                   labels_r: dict = {},
+                   idx: int = 0) -> tuple:
         print("Get Labels")
         for class_name in tqdm(self.analytics()[0]):
             idx += 1
@@ -52,22 +62,25 @@ class DataSet:
         np.save("./data/labels_r.npy", np.array(labels_r))
         return (labels, labels_r, idx)
 
-    def load_image(self, image_file_path: str, img_size: tuple = (56, 56)) -> list:
+    def load_image(self, image_file_path: str,
+                   img_size: tuple = (56, 56)) -> list:
         img = cv2.imread(self.data_dir + image_file_path)
         img = cv2.resize(img, (img_size))
         img = img / 255.0  # TODO Normalization
         return img
 
-    def create_np_eye_list_with_label(self, idx: int, class_name: any, labels: dict) -> np.array:
+    def create_np_eye_list_with_label(self, idx: int, class_name: any,
+                                      labels: dict) -> np.array:
         current_idx = labels[class_name]
         max_idx = idx
         np_eye = np.eye(current_idx, max_idx)
         np_eye = np_eye[-1]
         return np_eye
 
-    def data_to_X_train_y_train_X_test_y_test(
-        self, data: list, test_size: float = 0.25, shuffle: bool = True
-    ) -> tuple:
+    def data_to_X_train_y_train_X_test_y_test(self,
+                                              data: list,
+                                              test_size: float = 0.25,
+                                              shuffle: bool = True) -> tuple:
         print("Converting Data -> X,y + train,test")
         X = []
         y = []
@@ -75,8 +88,7 @@ class DataSet:
             X.append(X_iter)
             y.append(y_iter)
         X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=test_size, shuffle=shuffle
-        )
+            X, y, test_size=test_size, shuffle=shuffle)
         X_train = torch.from_numpy(np.array(X_train))
         y_train = torch.from_numpy(np.array(y_train))
         X_test = torch.from_numpy(np.array(X_test))
@@ -98,8 +110,10 @@ class DataSet:
         for iter_idx in tqdm(range(len(self.data_csv))):
             image_dir, classes_name = list(self.data_csv.iloc[iter_idx])
             img = self.load_image(image_dir)
-            label_np_eye = self.create_np_eye_list_with_label(idx, classes_name, labels)
+            label_np_eye = self.create_np_eye_list_with_label(
+                idx, classes_name, labels)
             data.append([img, label_np_eye])
         np.random.shuffle(data)
-        X_train, X_test, y_train, y_test = self.data_to_X_train_y_train_X_test_y_test(data)
+        X_train, X_test, y_train, y_test = self.data_to_X_train_y_train_X_test_y_test(
+            data)
         return (X_train, X_test, y_train, y_test, data, labels, labels_r, idx)
