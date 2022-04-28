@@ -15,7 +15,6 @@ class DataSet:
             idx += 1
             labels[directory] = idx
             labels_r[idx] = directory
-        return 
 
     def load_data(self):
         pass
