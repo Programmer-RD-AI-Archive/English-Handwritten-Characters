@@ -58,7 +58,7 @@ class DataSet:
         np_eye = np.eye(current_idx, max_idx)
         np_eye = np_eye[-1]
         return np_eye
-    def data_to_X_train_y_train_X_test_y_test():
+    def data_to_X_train_y_train_X_test_y_test(self):
         pass
     def load_data(self):
         data = []
