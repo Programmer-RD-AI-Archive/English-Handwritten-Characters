@@ -10,7 +10,11 @@ class DataSet:
         self.data_csv = pd.read_csv(data_dir + "english.csv")
         self.data_dir = data_dir
 
-    def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = -1):
+    def get_labels(self, labels: dict = None, labels_r: dict = None, idx: int = -1):
+        if labels is None:
+            labels = {}
+        if labels_r is None:
+            labels_r = {}
         for directory in os.listdir(self.data_dir):
             idx += 1
             labels[directory] = idx
@@ -18,8 +22,6 @@ class DataSet:
         np.save("./data/idx.npy",np.array(idx))
         np.save("./data/labels.npy",np.array(labels))
         np.save("./data/labels.npy",np.array(labels))
-        
-        
 
     def load_data(self):
         pass
