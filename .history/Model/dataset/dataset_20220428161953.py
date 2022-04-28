@@ -10,7 +10,8 @@ class DataSet:
     def __init__(self, data_dir="./data/") -> None:
         self.data_csv = pd.read_csv(data_dir + "english.csv")
         self.data_dir = data_dir
-    def analytics(self):
+    @staticmethod
+    def analytics():
         dict(data['label'].value_counts())
     def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = -1) -> tuple:
         print("Get Labels")

@@ -45,7 +45,8 @@ class DataSet:
         np.save("./data/labels.npy", np.array(labels))
         np.save("./data/labels_r.npy", np.array(labels_r))
         return (labels, labels_r, idx)
-    def load_image(self,image_file_path):
+    @staticmethod
+    def load_image(image_file_path):
         img = cv2.imread()
     def load_data(self):
         labels, labels_r, idx = self.get_labels()

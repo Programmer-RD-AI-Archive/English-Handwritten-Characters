@@ -52,7 +52,8 @@ class DataSet:
         img = img / 255.0  # TODO Normalization
         return img
 
-    def create_np_eye_list_with_label(self, idx, class_name, labels):
+    @staticmethod
+    def create_np_eye_list_with_label(idx, class_name, labels):
         current_idx = labels[class_name] + 1
         max_idx = idx + 1
         np_eye = np.eye(current_idx,max_itedr)

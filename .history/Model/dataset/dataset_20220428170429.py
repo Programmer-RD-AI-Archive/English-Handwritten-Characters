@@ -53,14 +53,16 @@ class DataSet:
         img = img / 255.0  # TODO Normalization
         return img
 
-    def create_np_eye_list_with_label(self, idx, class_name, labels):
+    @staticmethod
+    def create_np_eye_list_with_label(idx, class_name, labels):
         current_idx = labels[class_name] + 1
         max_idx = idx + 1
         np_eye = np.eye(current_idx, max_idx)
         np_eye = np_eye[-1]
         return np_eye
 
-    def data_to_X_train_y_train_X_test_y_test(self, data):
+    @staticmethod
+    def data_to_X_train_y_train_X_test_y_test(data):
         X = []
         y = []
         for X_iter, y_iter in data:
