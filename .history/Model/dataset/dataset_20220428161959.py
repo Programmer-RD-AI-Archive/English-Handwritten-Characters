@@ -1,19 +1,27 @@
 import os
+
 import cv2
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from tqdm import tqdm
 
 
 class DataSet:
+
     def __init__(self, data_dir="./data/") -> None:
         self.data_csv = pd.read_csv(data_dir + "english.csv")
         self.data_dir = data_dir
-    def analytics(self):
-        
-        dict(data['label'].value_counts())
-    def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = -1) -> tuple:
+
+    @staticmethod
+    def analytics():
+
+        dict(data["label"].value_counts())
+
+    def get_labels(self,
+                   labels: dict = {},
+                   labels_r: dict = {},
+                   idx: int = -1) -> tuple:
         print("Get Labels")
         for directory in tqdm(os.listdir(self.data_dir)):
             idx += 1
@@ -24,8 +32,5 @@ class DataSet:
         np.save("./data/labels_r.npy", np.array(labels_r))
         return (labels, labels_r, idx)
 
-    
-    
     def load_data(self):
         labels, labels_r, idx = self.get_labels()
-        
