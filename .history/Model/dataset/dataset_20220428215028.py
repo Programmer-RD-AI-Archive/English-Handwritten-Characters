@@ -7,7 +7,7 @@ import pandas as pd
 import torch
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-from PIL import Image
+
 from Model.preproccessing import PreProccessing
 
 
@@ -72,7 +72,6 @@ class DataSet:
                    img_size: tuple = (56, 56)) -> list:
         img = cv2.imread(self.data_dir + image_file_path)
         img = cv2.resize(img, (img_size))
-        img = self.transformation(Image.fromarray(img))
         img = img / 255.0  # TODO Normalization
         return img
 

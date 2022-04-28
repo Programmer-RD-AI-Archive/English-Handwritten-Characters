@@ -72,7 +72,7 @@ class DataSet:
                    img_size: tuple = (56, 56)) -> list:
         img = cv2.imread(self.data_dir + image_file_path)
         img = cv2.resize(img, (img_size))
-        img = self.transformation(Image.fromarray(img))
+        self.transformation(Image.fromarray(img))
         img = img / 255.0  # TODO Normalization
         return img
 

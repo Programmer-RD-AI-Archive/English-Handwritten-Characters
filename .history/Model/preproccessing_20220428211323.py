@@ -5,12 +5,13 @@ from torchvision.transforms import *
 
 # Transformations
 class PreProccessing:
-    def __init__(self,random_vertical_flip:bool=True,color_jitter:bool=True,random_grayscale:bool=True,random_horizontal_flip:bool=True,random_rotation:bool=True) -> None:
+    def __init__(self,to_tensor:bool=True,random_vertical_flip:bool=True,color_jitter:bool=True,random_grayscale:bool=True,random_horizontal_flip:bool=True,random_rotation:bool=True) -> None:
         self.color_jitter=color_jitter
         self.random_grayscale=random_grayscale
         self.random_horizontal_flip = random_horizontal_flip
         self.random_rotation=random_rotation
         self.random_vertical_flip=random_vertical_flip
+        self.to_tensor = to_tensor
         self.compose_list = []
     
     def color_jitter_pp(self):
@@ -27,7 +28,9 @@ class PreProccessing:
         
     def random_vertical_flip_pp(self):
         self.compose_list.append(RandomVerticalFlip())
-
+        
+    def to_tensor_pp(self):
+        self.compose_list.append(ToTensor())
         
     def forward(self):
         if self.color_jitter:
@@ -40,5 +43,7 @@ class PreProccessing:
             self.random_rotation_pp()
         if self.random_vertical_flip:
             self.random_vertical_flip_pp()
+        if self.to_tensor:
+            self.to_tensor_pp()
         transformation = Compose(self.compose_list)
         return transformation
