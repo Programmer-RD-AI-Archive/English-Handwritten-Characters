@@ -1,13 +1,15 @@
 import os
+
 import cv2
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-from tqdm import tqdm
+import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 
 class DataSet:
+
     def __init__(self, data_dir="./raw/", save_dir="./data/") -> None:
         self.data_csv = pd.read_csv(data_dir + "english.csv")
         self.data_dir = data_dir
@@ -19,7 +21,10 @@ class DataSet:
             classification_class = list(value_counts.keys())
             number_of_values = list(value_counts.values())
             plt.figure(figsize=(25, 7))
-            plt.bar(classification_class, number_of_values, color="green", width=0.4)
+            plt.bar(classification_class,
+                    number_of_values,
+                    color="green",
+                    width=0.4)
             plt.xlabel("Classifcation Class")
             plt.ylabel("Number of Values")
             plt.title("Classes In Relation to Values")
@@ -36,7 +41,10 @@ class DataSet:
             value_counts,
         )
 
-    def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = -1) -> tuple:
+    def get_labels(self,
+                   labels: dict = {},
+                   labels_r: dict = {},
+                   idx: int = -1) -> tuple:
         print("Get Labels")
         for class_name in tqdm(self.analytics()[0]):
             idx += 1
@@ -68,7 +76,12 @@ class DataSet:
         for X_iter, y_iter in data:
             X.append(X_iter)
             y.append(y_iter)
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, shuffle=True,)
+        X_train, X_test, y_train, y_test = train_test_split(
+            X,
+            y,
+            test_size=0.25,
+            shuffle=True,
+        )
 
     def load_data(self):
         data = []
@@ -76,7 +89,9 @@ class DataSet:
         for iter_idx in range(len(self.data_csv)):
             image_dir, classes_name = list(self.data_csv.iloc[iter_idx])
             img = self.load_image(image_dir)
-            label_np_eye = self.create_np_eye_list_with_label(idx, classes_name, labels)
+            label_np_eye = self.create_np_eye_list_with_label(
+                idx, classes_name, labels)
             data.append([img, label_np_eye])
         np.random.shuffle(data)
-        X_train, X_test, y_train, y_test = self.data_to_X_train_y_train_X_test_y_test(data)
+        X_train, X_test, y_train, y_test = self.data_to_X_train_y_train_X_test_y_test(
+            data)

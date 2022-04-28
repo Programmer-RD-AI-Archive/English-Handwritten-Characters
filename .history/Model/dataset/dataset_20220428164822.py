@@ -1,12 +1,14 @@
 import os
+
 import cv2
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from tqdm import tqdm
 
 
 class DataSet:
+
     def __init__(self, data_dir="./raw/", save_dir="./data/") -> None:
         self.data_csv = pd.read_csv(data_dir + "english.csv")
         self.data_dir = data_dir
@@ -18,7 +20,10 @@ class DataSet:
             classification_class = list(value_counts.keys())
             number_of_values = list(value_counts.values())
             plt.figure(figsize=(25, 7))
-            plt.bar(classification_class, number_of_values, color="green", width=0.4)
+            plt.bar(classification_class,
+                    number_of_values,
+                    color="green",
+                    width=0.4)
             plt.xlabel("Classifcation Class")
             plt.ylabel("Number of Values")
             plt.title("Classes In Relation to Values")
@@ -35,7 +40,10 @@ class DataSet:
             value_counts,
         )
 
-    def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = -1) -> tuple:
+    def get_labels(self,
+                   labels: dict = {},
+                   labels_r: dict = {},
+                   idx: int = -1) -> tuple:
         print("Get Labels")
         for class_name in tqdm(self.analytics()[0]):
             idx += 1
@@ -45,11 +53,12 @@ class DataSet:
         np.save("./data/labels.npy", np.array(labels))
         np.save("./data/labels_r.npy", np.array(labels_r))
         return (labels, labels_r, idx)
+
     @staticmethod
     def load_image(image_file_path):
         img = cv2.imread()
+
     def load_data(self):
         labels, labels_r, idx = self.get_labels()
         for idx in range(len(self.data_csv)):
             image_dir, classes_name = list(self.data_csv.iloc[idx])
-            
