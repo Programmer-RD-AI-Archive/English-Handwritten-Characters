@@ -5,22 +5,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import torch
+from PIL import Image
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-from PIL import Image
+
 from Model.preproccessing import PreProccessing
 
 
 class DataSet:
-
     def __init__(
         self,
         data_dir: str = "./raw/",
         save_dir: str = "./data/",
-        preproccessing:PreProccessing = PreProccessing(),
+        preproccessing: PreProccessing = PreProccessing(),
     ) -> None:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -30,11 +30,9 @@ class DataSet:
         self.save_dir = save_dir
         self.transformation = preproccessing.forward()
 
-    def analytics(self,
-                  plot: bool = False,
-                  figsize_of_analytics: tuple = ()) -> tuple:
+    def analytics(self, plot: bool = False, figsize_of_analytics: tuple = ()) -> tuple:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -44,10 +42,8 @@ class DataSet:
             classification_class = list(value_counts.keys())
             number_of_values = list(value_counts.values())
             plt.figure(figsize=figsize_of_analytics)
-            plt.bar(classification_class,
-                    number_of_values,
-                    color="green",
-                    width=0.4)
+            plt.bar(classification_class, number_of_values,
+                    color="green", width=0.4)
             plt.xlabel("Classification Class")
             plt.ylabel("Number of Values")
             plt.title("Classes In Relation to Values")
@@ -63,15 +59,12 @@ class DataSet:
             None,
             value_counts,
         )
-    
+
     # Loading Data Pytorch
-    
-    def get_labels(self,
-                   labels: dict = {},
-                   labels_r: dict = {},
-                   idx: int = 0) -> tuple:
+
+    def get_labels(self, labels: dict = {}, labels_r: dict = {}, idx: int = 0) -> tuple:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -86,10 +79,9 @@ class DataSet:
         np.save("./data/labels_r.npy", np.array(labels_r))
         return (labels, labels_r, idx)
 
-    def load_image(self, image_file_path: str,
-                   img_size: tuple = (56, 56)) -> list:
+    def load_image(self, image_file_path: str, img_size: tuple = (56, 56)) -> list:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -100,10 +92,11 @@ class DataSet:
         img = img / 255.0  # TODO Normalization
         return img
 
-    def create_np_eye_list_with_label(self, idx: int, class_name: any,
-                                      labels: dict) -> np.array:
+    def create_np_eye_list_with_label(
+        self, idx: int, class_name: any, labels: dict
+    ) -> np.array:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -114,10 +107,9 @@ class DataSet:
         np_eye = np_eye[-1]
         return np_eye
 
-    def data_to_X_train_y_train_X_test_y_test(self,
-                                              data: list,
-                                              test_size: float = 0.25,
-                                              shuffle: bool = True) -> tuple:
+    def data_to_X_train_y_train_X_test_y_test(
+        self, data: list, test_size: float = 0.25, shuffle: bool = True
+    ) -> tuple:
         print("Converting Data -> X,y + train,test")
         X = []
         y = []
@@ -125,7 +117,8 @@ class DataSet:
             X.append(X_iter)
             y.append(y_iter)
         X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=test_size, shuffle=shuffle)
+            X, y, test_size=test_size, shuffle=shuffle
+        )
         X_train = torch.from_numpy(np.array(X_train))
         y_train = torch.from_numpy(np.array(y_train))
         X_test = torch.from_numpy(np.array(X_test))
@@ -152,5 +145,6 @@ class DataSet:
             data.append([img, label_np_eye])
         np.random.shuffle(data)
         X_train, X_test, y_train, y_test = self.data_to_X_train_y_train_X_test_y_test(
-            data)
+            data
+        )
         return (X_train, X_test, y_train, y_test, data, labels, labels_r, idx)
