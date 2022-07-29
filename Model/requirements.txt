@@ -218,7 +218,7 @@ marshmallow-enum==1.5.1
 matplotlib @ file:///tmp/build/80754af9/matplotlib-suite_1613407855456/work
 matplotlib-inline==0.1.3
 mccabe==0.6.1
-mistune==0.8.4
+mistune==2.0.3
 mkl-fft==1.3.0
 mkl-random @ file:///tmp/build/80754af9/mkl_random_1618853849286/work
 mkl-service==2.3.0
