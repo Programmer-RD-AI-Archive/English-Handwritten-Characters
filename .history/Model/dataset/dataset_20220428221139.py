@@ -5,22 +5,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import torch
+from PIL import Image
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-from PIL import Image
+
 from Model.preproccessing import PreProccessing
 
 
 class DataSet:
 
     def __init__(
-        self,
-        data_dir: str = "./raw/",
-        save_dir: str = "./data/",
-        preproccessing:PreProccessing = PreProccessing(),
+            self,
+            data_dir: str = "./raw/",
+            save_dir: str = "./data/",
+            preproccessing: PreProccessing = PreProccessing(),
     ) -> None:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -34,7 +35,7 @@ class DataSet:
                   plot: bool = False,
                   figsize_of_analytics: tuple = ()) -> tuple:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -63,15 +64,15 @@ class DataSet:
             None,
             value_counts,
         )
-    
+
     # Loading Data Pytorch
-    
+
     def get_labels(self,
                    labels: dict = None,
                    labels_r: dict = None,
                    idx: int = 0) -> tuple:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -93,7 +94,7 @@ class DataSet:
     def load_image(self, image_file_path: str,
                    img_size: tuple = (56, 56)) -> list:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
@@ -108,7 +109,7 @@ class DataSet:
     def create_np_eye_list_with_label(idx: int, class_name: any,
                                       labels: dict) -> np.array:
         """sumary_line
-        
+
         Keyword arguments:
         argument -- description
         Return: return_description
