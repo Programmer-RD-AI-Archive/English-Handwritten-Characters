@@ -12,8 +12,7 @@ class DataSet:
                    labels: dict = {},
                    labels_r: dict = {},
                    idx: int = -1):
-        for directory in os.listdir(self.data_dir):
-            pass
+        pass
 
     def load_data(self):
         pass
