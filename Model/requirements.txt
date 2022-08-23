@@ -236,7 +236,7 @@ mysql-connector-python==8.0.27
 navigator-updater==0.2.1
 nbclassic==0.3.4
 nbclient==0.5.9
-nbconvert==6.3.0
+nbconvert==6.5.1
 nbformat @ file:///tmp/build/80754af9/nbformat_1617383369282/work
 ndjson==0.3.1
 nest-asyncio @ file:///tmp/build/80754af9/nest-asyncio_1613680548246/work
