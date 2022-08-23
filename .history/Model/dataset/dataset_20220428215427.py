@@ -5,19 +5,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import torch
+from PIL import Image
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-from PIL import Image
+
 from Model.preproccessing import PreProccessing
 
 
 class DataSet:
 
     def __init__(
-        self,
-        data_dir: str = "./raw/",
-        save_dir: str = "./data/",
-        preproccessing:PreProccessing = PreProccessing(),
+            self,
+            data_dir: str = "./raw/",
+            save_dir: str = "./data/",
+            preproccessing: PreProccessing = PreProccessing(),
     ) -> None:
         self.data_csv = pd.read_csv(data_dir + "english.csv")
         self.data_dir = data_dir
@@ -51,9 +52,9 @@ class DataSet:
             None,
             value_counts,
         )
-    
+
     # Loading Data Pytorch
-    
+
     def get_labels(self,
                    labels: dict = {},
                    labels_r: dict = {},
