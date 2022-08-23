@@ -12,7 +12,7 @@ class DataSet:
                    labels: dict = {},
                    labels_r: dict = {},
                    idx: int = -1):
-        pass
+        raise NotImplementedError()
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

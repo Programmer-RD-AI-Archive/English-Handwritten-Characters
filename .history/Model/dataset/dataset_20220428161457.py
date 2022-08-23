@@ -20,4 +20,4 @@ class DataSet:
             labels_r[idx] = directory
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

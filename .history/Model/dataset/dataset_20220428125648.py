@@ -8,7 +8,7 @@ class DataSet:
         data_csv = pd.read_csv(data_dir + "english.csv")
 
     def get_labels(self):
-        pass
+        raise NotImplementedError()
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

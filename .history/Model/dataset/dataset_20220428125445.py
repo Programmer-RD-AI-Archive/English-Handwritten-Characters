@@ -8,4 +8,4 @@ class DataSet:
         data_csv = pd.read_csv(data_dir + "english.csv")
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

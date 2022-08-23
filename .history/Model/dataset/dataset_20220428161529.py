@@ -23,4 +23,4 @@ class DataSet:
         np.save("./data/labels.npy", np.array(idx))
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

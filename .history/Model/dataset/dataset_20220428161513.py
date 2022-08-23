@@ -22,4 +22,4 @@ class DataSet:
         np.save("")
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

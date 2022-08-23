@@ -20,4 +20,4 @@ class DataSet:
             labels
 
     def load_data(self):
-        pass
+        raise NotImplementedError()

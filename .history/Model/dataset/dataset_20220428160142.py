@@ -16,4 +16,4 @@ class DataSet:
             pass
 
     def load_data(self):
-        pass
+        raise NotImplementedError()
