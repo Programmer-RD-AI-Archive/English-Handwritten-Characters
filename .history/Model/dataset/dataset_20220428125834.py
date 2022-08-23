@@ -9,9 +9,13 @@ class DataSet:
         self.data_dir = data_dir
 
     def get_labels(self,
-                   labels: dict = {},
-                   labels_r: dict = {},
+                   labels: dict = None,
+                   labels_r: dict = None,
                    idx: int = -1):
+        if labels is None:
+            labels = {}
+        if labels_r is None:
+            labels_r = {}
         pass
 
     def load_data(self):

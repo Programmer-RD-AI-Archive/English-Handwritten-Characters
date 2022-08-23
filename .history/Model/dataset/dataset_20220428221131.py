@@ -67,9 +67,13 @@ class DataSet:
     # Loading Data Pytorch
     
     def get_labels(self,
-                   labels: dict = {},
-                   labels_r: dict = {},
+                   labels: dict = None,
+                   labels_r: dict = None,
                    idx: int = 0) -> tuple:
+        if labels is None:
+            labels = {}
+        if labels_r is None:
+            labels_r = {}
         print("Get Labels")
         for class_name in tqdm(self.analytics()[0]):
             idx += 1
