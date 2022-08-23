@@ -17,7 +17,6 @@ class DataSet:
         for directory in os.listdir(self.data_dir):
             idx += 1
             labels[directory] = idx
-            labels
 
     def load_data(self):
         pass
