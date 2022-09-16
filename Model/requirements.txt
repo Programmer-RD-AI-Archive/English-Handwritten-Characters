@@ -210,7 +210,7 @@ llvmlite==0.36.0
 locket==0.2.1
 lxml @ file:///tmp/build/80754af9/lxml_1616443220220/work
 mailer==0.8.1
-Mako==1.1.6
+Mako==1.2.2
 Markdown==3.3.6
 MarkupSafe @ file:///home/conda/feedstock_root/build_artifacts/markupsafe_1621455677251/work
 marshmallow==3.14.1
