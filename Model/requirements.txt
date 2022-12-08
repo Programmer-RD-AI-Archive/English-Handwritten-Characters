@@ -51,7 +51,7 @@ bs4==0.0.1
 cachetools==4.2.4
 catboost @ https://pypi.org/packages/cp38/c/catboost/catboost-0.26.1-cp38-none-manylinux1_x86_64.whl
 catkin-pkg==0.4.24
-certifi==2021.10.8
+certifi==2022.12.7
 cffi==1.15.0
 cfgv==3.3.1
 chardet @ file:///tmp/build/80754af9/chardet_1607706746162/work
