@@ -359,7 +359,7 @@ scipy==1.4.1
 seaborn @ file:///tmp/build/80754af9/seaborn_1608578541026/work
 SecretStorage==3.3.1
 Send2Trash==1.8.0
-sentry-sdk==1.5.1
+sentry-sdk==1.14.0
 setuptools-scm==6.3.2
 shortuuid==1.0.8
 simple-geoip==0.1.1
