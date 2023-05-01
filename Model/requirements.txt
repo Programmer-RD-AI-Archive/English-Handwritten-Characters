@@ -109,7 +109,7 @@ fiftyone-brain==0.7.2
 fiftyone-db==0.3.0
 filelock==3.4.0
 flake8 @ file:///tmp/build/80754af9/flake8_1615834841867/work
-Flask==2.0.2
+Flask==2.3.2
 Flask-BabelEx==0.9.4
 Flask-Login==0.5.0
 Flask-Mail==0.9.1
