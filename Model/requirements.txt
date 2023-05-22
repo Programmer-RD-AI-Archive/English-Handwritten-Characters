@@ -227,7 +227,7 @@ monotonic==1.6
 more-itertools @ file:///tmp/build/80754af9/more-itertools_1613676688952/work
 motor==2.5.1
 moviepy==1.0.3
-mpmath==1.2.1
+mpmath==1.3.0
 msgpack==1.0.3
 multidict==5.2.0
 multipledispatch==0.6.0
