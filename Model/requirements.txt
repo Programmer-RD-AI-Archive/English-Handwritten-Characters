@@ -355,7 +355,7 @@ s3transfer==0.5.0
 safety==1.10.3
 scikit-image==0.18.3
 scikit-learn @ file:///tmp/build/80754af9/scikit-learn_1614446682169/work
-scipy==1.4.1
+scipy==1.10.0
 seaborn @ file:///tmp/build/80754af9/seaborn_1608578541026/work
 SecretStorage==3.3.1
 Send2Trash==1.8.0
