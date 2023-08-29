@@ -185,7 +185,7 @@ jupyter-console @ file:///tmp/build/80754af9/jupyter_console_1616615302928/work
 jupyter-core==4.9.1
 jupyter-kite==1.2.0
 jupyter-packaging @ file:///tmp/build/80754af9/jupyter-packaging_1613502826984/work
-jupyter-server==1.12.0
+jupyter-server==2.7.2
 jupyterlab==3.2.4
 jupyterlab-kite==2.0.2
 jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
